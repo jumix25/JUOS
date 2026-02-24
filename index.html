@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JUOS Mobile Concept</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <header class="top-bar glass">
+      <span id="clock">09:41</span>
+      <div class="lang-switch" role="group" aria-label="Language Switch">
+        <button data-lang="de" class="lang-btn active">DE</button>
+        <button data-lang="en" class="lang-btn">US</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="lock-screen glass active" id="lockScreen">
+        <h1 data-i18n="welcome">Willkommen bei JUOS</h1>
+        <p data-i18n="choose_unlock">Wähle Entsperrung</p>
+        <div class="unlock-tabs">
+          <button id="patternTab" class="tab-btn active" data-i18n="pattern_lock">Muster-Lock</button>
+          <button id="pinTab" class="tab-btn" data-i18n="pin_lock">PIN-Lock</button>
+        </div>
+
+        <div id="patternPane" class="unlock-pane active">
+          <p data-i18n="pattern_hint">Verbinde mindestens 4 Punkte (Demo-Muster: 1-2-3-6).</p>
+          <div class="pattern-grid" id="patternGrid" aria-label="Pattern Lock"></div>
+          <button class="unlock-btn" id="unlockPattern" data-i18n="unlock">Entsperren</button>
+        </div>
+
+        <div id="pinPane" class="unlock-pane">
+          <p data-i18n="pin_hint">Gib den 4-stelligen PIN ein (Demo-PIN: 1990).</p>
+          <input id="pinInput" class="pin-input" maxlength="4" inputmode="numeric" placeholder="••••" />
+          <button class="unlock-btn" id="unlockPin" data-i18n="unlock">Entsperren</button>
+        </div>
+
+        <p id="lockMessage" class="message"></p>
+      </section>
+
+      <section class="home-screen" id="homeScreen">
+        <div class="home-header glass">
+          <h2>JUOS</h2>
+          <button id="retroToggle" class="retro-toggle" data-i18n="retro_mode">Retro-Modus</button>
+        </div>
+
+        <div class="cards">
+          <article class="card glass">
+            <h3 data-i18n="next_gen">Next Gen AI</h3>
+            <p data-i18n="ai_desc">Stelle Fragen an deinen Assistenten.</p>
+            <textarea id="aiPrompt" rows="3" data-i18n-placeholder="ask_anything" placeholder="Frag mich alles..."></textarea>
+            <button id="askAi" data-i18n="send">Senden</button>
+            <p class="small" data-i18n="api_note">API-Key aus Sicherheitsgründen nicht im Code gespeichert. Bitte nur per sichere Umgebung übergeben.</p>
+            <div id="aiResponse" class="ai-response"></div>
+          </article>
+
+          <article class="card glass">
+            <h3 data-i18n="visual_title">Glass Design</h3>
+            <p data-i18n="visual_desc">Transparente Ebenen, weiche Schatten und smoothe Animationen.</p>
+            <div class="orbs">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
