@@ -15,6 +15,10 @@ const i18n = {
     api_note: "API-Key aus Sicherheitsgründen nicht im Code gespeichert. Bitte nur per sichere Umgebung übergeben.",
     visual_title: "Glass Design",
     visual_desc: "Transparente Ebenen, weiche Schatten und smoothe Animationen.",
+    html_preview: "HTML Vorschau",
+    html_preview_desc: "Füge einfaches HTML ein und sieh dir die Darstellung an.",
+    html_preview_placeholder: "<strong>Hallo JUOS</strong>",
+    preview: "Vorschau",
   },
   en: {
     welcome: "Welcome to JUOS",
@@ -32,6 +36,10 @@ const i18n = {
     api_note: "For security, API keys are not stored in code. Provide them via a secure environment.",
     visual_title: "Glass Design",
     visual_desc: "Transparent layers, soft shadows, and smooth animations.",
+    html_preview: "HTML Preview",
+    html_preview_desc: "Paste simple HTML to preview how it renders.",
+    html_preview_placeholder: "<strong>Hello JUOS</strong>",
+    preview: "Preview",
   },
 };
 
@@ -129,6 +137,30 @@ document.getElementById("askAi").addEventListener("click", async () => {
   out.textContent = currentLang === "de"
     ? "Next Gen (Demo): Sichere API-Integration aktivieren, um echte Antworten zu erhalten."
     : "Next Gen (Demo): Enable secure API integration to receive real responses.";
+});
+
+document.getElementById("renderHtml").addEventListener("click", () => {
+  const htmlInput = document.getElementById("htmlInput").value;
+  const preview = document.getElementById("htmlPreview");
+
+  preview.textContent = "";
+  if (!htmlInput.trim()) return;
+
+  const parser = new DOMParser();
+  const parsed = parser.parseFromString(htmlInput, "text/html");
+
+  parsed.body.querySelectorAll("script, iframe, object, embed, link, style").forEach((el) => el.remove());
+  parsed.body.querySelectorAll("*").forEach((el) => {
+    Array.from(el.attributes).forEach((attr) => {
+      const name = attr.name.toLowerCase();
+      const value = attr.value.toLowerCase();
+      if (name.startsWith("on") || value.includes("javascript:")) {
+        el.removeAttribute(attr.name);
+      }
+    });
+  });
+
+  preview.innerHTML = parsed.body.innerHTML;
 });
 
 setInterval(() => {
