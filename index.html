@@ -48,6 +48,14 @@
 
         <div class="cards">
           <article class="card glass">
+            <h3 data-i18n="html_preview">HTML Preview</h3>
+            <p data-i18n="html_preview_desc">Paste simple HTML to preview how it renders.</p>
+            <textarea id="htmlInput" rows="4" data-i18n-placeholder="html_preview_placeholder" placeholder="<strong>Hello JUOS</strong>"></textarea>
+            <button id="renderHtml" data-i18n="preview">Preview</button>
+            <div id="htmlPreview" class="html-preview" aria-live="polite"></div>
+          </article>
+
+          <article class="card glass">
             <h3 data-i18n="next_gen">Next Gen AI</h3>
             <p data-i18n="ai_desc">Stelle Fragen an deinen Assistenten.</p>
             <textarea id="aiPrompt" rows="3" data-i18n-placeholder="ask_anything" placeholder="Frag mich alles..."></textarea>
