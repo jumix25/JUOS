@@ -1,7 +1,8 @@
-# JUOS Mobile Concept
+# JUOS Website (Single-File HTML)
 
-A modern mobile OS concept UI with:
+A modern JUOS website concept delivered as a **fully self-contained HTML file** (`index.html`).
 
+Features:
 - Glass-texture visual design
 - Pattern lock and PIN lock unlock flows
 - Retro mode (90s style)
